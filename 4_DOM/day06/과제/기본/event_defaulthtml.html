@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    window.onload = function () {
+      let button = document.getElementById('button');
+
+      button.onclick = function () {
+        //기본 이벤트를 제거하라
+        return true;
+      };
+    };
+  </script>
+  <body>
+    <a href="https://www.naver.com" id="button">버튼</a>
+  </body>
+</html>

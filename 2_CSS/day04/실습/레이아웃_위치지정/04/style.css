@@ -1,0 +1,14 @@
+body {
+  height: 1000vh;
+  /* vh => px 처럼 길이를 나타내는 단위 , 페이지의 길이를 정의할때 사용*/
+}
+div {
+  width: 200px;
+  height: 200px;
+  background-color: tomato;
+  position: static;
+}
+#second {
+  background-color: teal;
+  position: fixed;
+}

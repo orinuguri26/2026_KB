@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background-color: tomato;
+}
+#first {
+  background-color: rgb(165, 12, 104);
+}
+#second {
+  background-color: seagreen;
+}

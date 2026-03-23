@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //이벤트를 연결한다.
+      window.onload = function () {
+        let header = document.getElementById('header');
+
+        //문서 객체를 조작해 본다.
+        header.style.color = 'orange';
+        header.style.background = 'red';
+        header.innerHTML = 'From JavaScript';
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Header</h1>
+  </body>
+</html>

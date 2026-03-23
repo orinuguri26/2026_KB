@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background-color: tomato;
+}
+#second {
+  width: 100px;
+  height: 500px;
+  background-color: seagreen;
+}

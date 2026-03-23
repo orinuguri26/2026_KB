@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head></head>
+  <body>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+
+    <script>
+      /*
+    // 모든 노드 포함 (줄바꿈 포함)
+    NodeList(5) [#text, <li>, #text, <li>, #text]
+
+    // 요소 노드만 포함
+    HTMLCollection(2) [<li>, <li>]  
+      */
+
+      // <ul>                   ← Element Node
+      // \n                   ← Text Node (줄바꿈)
+      // <li>Item 1</li>      ← Element Node
+      // \n                   ← Text Node (줄바꿈)
+      // <li>Item 2</li>      ← Element Node
+      // \n                   ← Text Node (줄바꿈)
+      // </ul>
+    </script>
+  </body>
+</html>

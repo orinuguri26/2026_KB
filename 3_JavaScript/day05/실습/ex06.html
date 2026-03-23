@@ -1,0 +1,36 @@
+<script>
+  //set 객체를 set1으로 네이밍하여 생성하세요
+  const set1 = new Set();
+
+  //값 추가  add()
+  set1.add('java');
+  set1.add('python');
+  set1.add('html');
+  set1.add('node');
+
+  set1.add('script').add('image');
+  console.log(set1);
+
+  set1.add('image'); //set은 중복값을 허용하지 않음
+  console.log(set1);
+
+  const fruits = new Set(['apple', 'banana', 'orange']);
+  console.log(fruits);
+
+  //   fruits.delete('banana');
+  //   console.log(fruits);
+
+  //   fruits.clear();
+  //   console.log(fruits);
+
+  fruits.forEach((val, val1, fruits) => {
+    console.log(val, val1, fruits);
+  });
+
+  for (const value of fruits) {
+    console.log('과일바구니 과일종류' + value);
+  }
+
+  console.log(fruits.has('banana'));
+  console.log(fruits.size);
+</script>
