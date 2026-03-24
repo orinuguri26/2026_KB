@@ -1,31 +1,63 @@
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      cur: null, //현재 입력값
+      output: '', //화면 출력값
+    };
+  },
+  methods: {
+    operation(event) {
+      // console.log('click');
+      const n = event.currentTarget.value;
+      this.cur = this.cur === null ? n : (this.cur += n);
+      this.output = this.cur;
+      //console.log(n);
+      //화면출력 output input text
+    },
+  },
+};
 </script>
 <template>
   <div class="calculator">
     <form name="forms">
       <input type="text" v-model="output" name="output" readonly />
-      <input type="button" class="clear" value="C" @click="operation()" />
-      <input type="button" class="operator" value="/" @click="operation()" />
-      <input type="button" value="1" @click="operation()" />
-      <input type="button" value="2" @click="operation()" />
-      <input type="button" value="3" @click="operation()" />
-      <input type="button" class="operator" value="*" @click="operation()" />
-      <input type="button" value="4" @click="operation()" />
-      <input type="button" value="5" @click="operation()" />
-      <input type="button" value="6" @click="operation()" />
+      <input type="button" class="clear" value="C" @click="operation($event)" />
+      <input
+        type="button"
+        class="operator"
+        value="/"
+        @click="operation($event)"
+      />
+      <input type="button" value="1" @click="operation($event)" />
+      <input type="button" value="2" @click="operation($event)" />
+      <input type="button" value="3" @click="operation($event)" />
+      <input
+        type="button"
+        class="operator"
+        value="*"
+        @click="operation($event)"
+      />
+      <input type="button" value="4" @click="operation($event)" />
+      <input type="button" value="5" @click="operation($event)" />
+      <input type="button" value="6" @click="operation($event)" />
       <input type="button" class="operator" value="+" />
-      <input type="button" value="7" @click="operation()" />
-      <input type="button" value="8" @click="operation()" />
-      <input type="button" value="9" @click="operation()" />
-      <input type="button" class="operator" value="-" @click="operation()" />
-      <input type="button" class="dot" value="." @click="operation()" />
-      <input type="button" value="0" @click="operation()" />
+      <input type="button" value="7" @click="operation($event)" />
+      <input type="button" value="8" @click="operation($event)" />
+      <input type="button" value="9" @click="operation($event)" />
+      <input
+        type="button"
+        class="operator"
+        value="-"
+        @click="operation($event)"
+      />
+      <input type="button" class="dot" value="." @click="operation($event)" />
+      <input type="button" value="0" @click="operation($event)" />
       <input
         type="button"
         class="operator result"
         value="="
-        @click="operation()"
+        @click="operation($event)"
       />
     </form>
   </div>
