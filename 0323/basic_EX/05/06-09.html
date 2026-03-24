@@ -1,0 +1,36 @@
+<style>
+  .btnColor {
+    background-color: aqua;
+    color: black;
+  }
+  .btnAlign {
+    text-align: center;
+    width: 120px;
+  }
+  .btnBorder {
+    border: 1px dashed khaki;
+  }
+</style>
+
+<div id="app">
+  <input type="checkbox" v-model="btnStyle.btnColor" />색상<br />
+  <input type="checkbox" v-model="btnStyle.btnAlign" />정렬, 크기<br />
+  <input type="checkbox" v-model="btnStyle.btnBorder" />테두리<br />
+  <button type="button" :class="btnStyle">버튼</button>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+  let vm = Vue.createApp({
+    name: 'App',
+    data() {
+      return {
+        btnStyle: {
+          btnColor: false,
+          btnAlign: false,
+          btnBorder: false,
+        },
+      };
+    },
+  }).mount('#app');
+</script>
