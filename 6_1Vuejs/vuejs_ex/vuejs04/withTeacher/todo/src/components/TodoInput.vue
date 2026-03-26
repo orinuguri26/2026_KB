@@ -10,22 +10,20 @@
 export default {
   data() {
     return {
-      inputMsg: '', //입력 todo 데이터 정의
+      inputMsg: '', // 데이터 정의
     };
   },
   emits: ['addTodo'],
   methods: {
     addTodo() {
-      //console.log(this.inputMsg); //할일 출력
-      this.$emit('addTodo', this.inputMsg); //부모 컴포넌트 이벤트 호출
-      this.inputMsg = ''; //입력 데이터 초기화 왜? 문자열이라서 계속 추가되니까...
+      this.$emit('addTodo', this.inputMsg); // 부모 컴포넌트 이벤트 호출
+      this.inputMsg = ''; // 입력 데이터 초기화
     },
   },
 };
 </script>
 <template>
   <div class="todo__input">
-    <!-- 정의한 inputMsg를 양방향 데이터 바인딩 -->
     <input
       v-model="inputMsg"
       type="text"

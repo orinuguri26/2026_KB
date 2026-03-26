@@ -15,59 +15,71 @@
 ---------------------------------------
    할일 목록 필터링
    1. 현재 목록 상태를 관리할 수 있는 데이터 정의 : current 
-      전체 가 기본값이서서 current 데이터의 초깃값은 'all' 정의
+      '전체' 가 기본값이서 current 데이터의 초깃값은 'all' 정의
+   2. current 데이터의 값에 따라 출력할 데이터를 변경하기 위해
+      App.vue 에 computed 옵션 속성에서 할일 목록을 저장하는
+      todo데이터가 배열이므로 배열의 표준 내장객체 메서드인 filter()
+      사용하여 current값이 all 이면 필터링 하지 않고 그래도
+      todo 데이터를 보여주고
+      completed 라면 completed 속성의 값이 true인 것만 필터링해서 데이터를 보여준다.   
 
 -->
 <script>
-import TodoHeader from './components/TodoHeader.vue';
-import TodoList from './components/TodoList.vue';
-import TodoInput from './components/TodoInput.vue';
-
+import TodoHeader from '@/components/TodoHeader.vue';
+import TodoList from '@/components/TodoList.vue';
+import TodoInput from '@/components/TodoInput.vue';
 export default {
-  data() {
-    return {
-      //할일 목록을 관리하기 위해서 todo데이터 정의
-      // 데이터가 여러개 일 수 있기에 배열로 정의함
-      todo: [],
-      current: 'all',
-    };
-  },
   components: {
     TodoHeader,
     TodoList,
     TodoInput,
   },
+  data() {
+    return {
+      todo: [],
+      current: 'all',
+    };
+  },
+  computed: {
+    computedTodo() {
+      if (this.current === 'all') {
+        return this.todo;
+      } else {
+        return this.todo.filter((v) => v.completed);
+      }
+    },
+  },
   methods: {
     addTodo(inputMsg) {
       const item = {
-        id: Math.random(), //고유값 할당
+        id: Math.random(), // 고유한 값
         msg: inputMsg, // 할 일 텍스트
-        completed: false, //할일 완료 여부 체크
+        completed: false, // 할 일 완료 여부
       };
       this.todo.push(item);
     },
-
     updateTab(tab) {
       this.current = tab;
     },
-    computed: {
-      coumputedTodo() {
-        if (this.current === 'all') {
-          return this.todo;
-        } else {
-          return this.todo.filter((v) => v.completed);
-        }
-      },
+    deleteTodo(id) {
+      this.todo = this.todo.filter((v) => v.id !== id);
+    },
+    updateTodo(id) {
+      this.todo = this.todo.map((v) =>
+        v.id === id ? { ...v, completed: !v.completed } : v,
+      );
     },
   },
 };
 </script>
-
 <template>
   <div class="todo">
-    <!-- current데이터를 TodoHeader 전달 -->
     <TodoHeader :current @update-tab="updateTab" />
-    <TodoList :computed-todo="computedTodo" />
+    <TodoList
+      :computed-todo="computedTodo"
+      @delete-todo="deleteTodo"
+      @update-todo="updateTodo"
+    />
     <TodoInput @add-todo="addTodo" />
   </div>
 </template>
