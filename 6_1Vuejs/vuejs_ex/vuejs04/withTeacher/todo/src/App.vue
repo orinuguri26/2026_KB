@@ -8,7 +8,14 @@
      할일 완료 여부(completed)     {id:1, msg:'운동하기',completed:false}
   3. 할일 목록 데이터를 관리하기 위한 자료구조 정의 todo : []   
   4. 할 일 목록 객체 데이터를 todo데이터에 추가하는 기능 . todo [] => push()
-
+  5. methods 옵션 속성으로 정의한 addTodo() 함수
+     v-on 디렉티브를 사용하여 TodoInput 컴포넌트에 전달하고
+     전달한 이벤트는 TodoInput 컴포넌트에서 $emit()함수로 
+     실행되게 한다.
+---------------------------------------
+   할일 목록 필터링
+   1. 현재 목록 상태를 관리할 수 있는 데이터 정의 : current 
+      전체 가 기본값이서서 current 데이터의 초깃값은 'all' 정의
 
 -->
 <script>
@@ -22,6 +29,7 @@ export default {
       //할일 목록을 관리하기 위해서 todo데이터 정의
       // 데이터가 여러개 일 수 있기에 배열로 정의함
       todo: [],
+      current: 'all',
     };
   },
   components: {
@@ -38,13 +46,18 @@ export default {
       };
       this.todo.push(item);
     },
+
+    updateTab(tab) {
+      this.current = tab;
+    },
   },
 };
 </script>
 
 <template>
   <div class="todo">
-    <TodoHeader />
+    <!-- current데이터를 TodoHeader 전달 -->
+    <TodoHeader :current @update-tab="updateTab" />
     <TodoList />
     <TodoInput @add-todo="addTodo" />
   </div>
