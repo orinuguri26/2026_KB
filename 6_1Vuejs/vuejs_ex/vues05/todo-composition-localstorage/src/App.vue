@@ -94,7 +94,7 @@ const addTodo = (inputMsg) => {
     </div>
 
     <!-- 현재 탭에 맞는 목록을 출력한다. -->
-    <TodoList />
+    <TodoList :items="filteredTodo" />
 
     <!-- 완료된 항목이 1개 이상 있을 때만 일괄 삭제 버튼을 보여준다. -->
     <div>
