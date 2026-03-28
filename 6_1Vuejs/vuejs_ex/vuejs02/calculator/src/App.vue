@@ -128,6 +128,7 @@ export default {
     </form>
   </div>
 </template>
+
 <style>
 * {
   margin: 0;
