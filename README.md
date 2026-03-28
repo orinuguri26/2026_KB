@@ -1,140 +1,48 @@
-# 📘 KB IT's Your Life 7기 25차 주강사 (전공) 수업자료 안내
+# 📘 실습 및 과제를 올리는 공간
 
-안녕하세요 😊
-**KB IT's Your Life 7기 25차(전공) 과정**의 수업자료를 체계적으로 정리한 공간입니다.
+일자 별로 주어진 과제 및 실습을 수행하고 기록하여 push함
 
-과정 단계별로 단계적으로 학습할 수 있도록 구성되어 있습니다.
+## 03/23
 
----
+04 부트스트랩(기본) / 05 스타일 처리(기본) 실습 진행
 
-## 📚 학습 커리큘럼 
+## 03/28
 
-본 과정은 아래 순서로 수업자료가 업데이트됩니다.
+03/26 주어진 options api 활용한 todoList 실습의 과제로 주어진 기능 추가
 
-### 1️⃣ HTML
+### vues04 withteacher
 
-* 웹 페이지의 구조를 만드는 기초 언어
-* 주요 학습 내용
+1. 수정 기능
 
-  * 태그 구조 (`<html>`, `<head>`, `<body>`)
-  * 텍스트, 이미지, 링크
-  * 시맨틱 태그
+- 수정 icon을 추가하여 click event로 editTodo 함수와 연결
+- editTodo에서 v-for로 뿌려준 item중 현 item의 id를 매개변수로 받음
+- 받은 id는 반응형 변수인 isEdit에 저장
+- 이에 따라 isEdit과 연관된 item.msg를 뿌려주는 span에서 변화를 감지함
+- v-if에 따라 isEdit의 값과 item의 id를 비교해 id가 다르면 그대로(수정 상황x)
+- id가 같으면 input태그가 활성화 되며 수정 창이 생김
+- v-model을 통해 양방향으로 item.msg에 바로 변화내용을 보내 수정함, enter키 누르면 이벤트 발생시켜 endEdit()호출
+- endEdit()을 통해 isEdit값을 다시 초기화 하여 수정을 끝났음을 표현함
 
----
+2. 저장 기능
 
-### 2️⃣ CSS
+- App.vue에서 localStorage에 todo-app-options-api로 저장하겠다고 STORAGE_KEY를 생성
+- 컴포넌트가 mount될 때 저장된 값을 불러오므로 mounted()로 후킹한다.
+- saved변수에 localStorage의 미리 선언했던 STORAGE_KEY에 해당하는 문자열 데이터를 가져온다.
+- 해당 데이터(JSON)을 파싱해서 todo 배열에 가져온다.
 
-* 웹 페이지의 스타일과 레이아웃을 담당
-* 주요 학습 내용
+- watch를 통해서 변화를 감시하고 변화가 생기면 해당 변화값을 저장하도록 한다.
+- todo를 감시대상으로 잡고 변화값을 newTodo로 한다.
+- localStorage에 STORAGE_KEY에 해당하는 값에 바뀐 내용을 저장해준다.
+- 이때 deep: true가 있어야 값에 깊숙히 접근해 내부의 값을 바꿀 수 있다고 한다.
 
-  * 선택자 (Selector)
-  * 박스 모델 (Box Model)
-  * Flexbox / Grid
-  * 반응형 디자인
+### vues05 todo-composition-localstorage
 
----
+- 저장기능
 
-### 3️⃣ JavaScript
+1.  loadTodos 함수를 정의한다. saved 변수에 미리선언한 STORAGE_KEY에 해당하는 저장값을 불러온다.
+2.  저장값이 있다면 해당 JSON문자열 데이터를 파싱해서 todo에 가져온다.
 
-* 웹 페이지에 동적인 기능을 추가하는 언어
-* 주요 학습 내용
+3.  onmounted를 통해 컴포넌트가 마운트 될 때 loadTodos 함수를 호출해 저장된 값을 불러와준다.
 
-  * 변수, 함수, 조건문, 반복문
-  * 이벤트 처리
-  * 비동기 처리 (Promise, async/await)
-
----
-
-### 4️⃣ DOM (Document Object Model)
-
-* HTML 문서를 JavaScript로 제어하는 방식
-* 주요 학습 내용
-
-  * DOM 선택 (`querySelector`)
-  * 요소 생성/삭제
-  * 이벤트 핸들링
-  * 동적 UI 구성
-
----
-
-### 5️⃣ Node.js
-
-* JavaScript를 서버에서 실행할 수 있는 환경
-* 주요 학습 내용
-
-  * 서버 생성 (HTTP 모듈)
-  * 파일 시스템 처리
-  * npm 패키지 관리
-  * REST API 기초
-
----
-
-### 6️⃣ Vue.js
-
-* 현대적인 프론트엔드 프레임워크
-* 주요 학습 내용
-
-  * 컴포넌트 기반 구조
-  * 데이터 바인딩
-  * Props & Events
-  * 상태 관리 기초
-
----
-
-## 📁 폴더 구조 예시
-
-```bash
-📦 프로젝트 루트
- ┣ 📂 1_HTML
- ┣ 📂 2_CSS
- ┣ 📂 3_JavaScript
- ┣ 📂 4_DOM
- ┣ 📂 5_NodeJS
- ┗ 📂 6_VueJS
-```
-
----
-
-## 🚀 학습 목표
-
-* 웹 개발의 전체 흐름 이해
-* 프론트엔드 핵심 기술 습득
-* 실습 중심의 프로젝트 수행 능력 강화
-* Vue 기반 SPA 개발 기초 확보
-
----
-
-## 📝 사용 방법
-
-1. 각 폴더는 순차적으로 학습하는 것을 권장합니다.
-2. 실습 코드를 직접 실행해보며 학습하세요.
-3. 이해가 어려운 부분은 반복 학습을 권장합니다.
-
----
-
-## 💡 Tip
-
-* 코드 작성 후 반드시 실행해보기
-* 작은 단위로 실습하며 이해하기
-* GitHub에 꾸준히 커밋하여 기록 남기기
-
----
-
-## 📌 안내
-
-* 본 자료는 수업 진행에 따라 지속적으로 업데이트됩니다.
-* 최신 내용은 항상 저장소를 Pull 받아 확인해주세요.
-
-```bash
-git pull origin main
-```
-
----
-
-## 👨‍💻 작성자
-
-KB IT's Your Life 7기 전공 25차(전공) 서유미 강사
-
----
-
-✨ **꾸준한 실습과 반복이 가장 빠른 성장 방법입니다!**
+4.  watch를 통해 todo를 감시해주고 값이 변경되면 newTodo로 변화된 값을 처리한다.
+5.  setItem을 통해 변화된 값인 newTodo를 저장해준다.
