@@ -4,30 +4,34 @@ export default {
     return {
       cur: '',
       output: '',
+      prev: '',
+      operator: '',
+      errorMessage: '',
     };
   },
   methods: {
+    clear() {
+      this.cur = '';
+      this.output = '';
+      return;
+    },
     isOperator(value) {
       return value === '+' || value === '-' || value === '*' || value === '/';
     },
-
-    operation(event) {
-      const n = event.currentTarget.value;
-
-      // C 버튼
-      if (n === 'C') {
-        this.cur = '';
-        this.output = '';
-        return;
-      }
-
-      // = 버튼
-      if (n === '=') {
-        this.calculate();
-        return;
-      }
-
-      // 현재 마지막 문자
+    setError() {
+      this.errorMessage = '숫자를 먼저 입력하세요.';
+      return;
+    },
+    clearError() {
+      this.errorMessage = '';
+      return;
+    },
+    handleNumberInput() {
+      // 일반 입력
+      this.cur += n;
+      this.output = this.cur;
+    },
+    handleOperator() {
       const lastChar = this.cur[this.cur.length - 1];
 
       // 연산자 중복 입력 방지
@@ -44,10 +48,39 @@ export default {
           return;
         }
       }
+    },
+    handleEqual() {},
+    canCalculate() {
+      return this.prev !== null && this.cur !== null && this.operator !== null;
+    },
+    computeResult() {
+      const left = Number(this.prev);
+      const right = Number(this.cur);
+      return this.operatorActions[this.operator](left, right);
+    },
+    operation(event) {
+      const n = event.currentTarget.value;
+      //일단 입력 받아옴
 
-      // 일반 입력
-      this.cur += n;
-      this.output = this.cur;
+      //1. C 버튼 처리
+      //2. = 버튼 처리
+      //3. 마지막 문자 가져오고
+      //4. 숫자 없는 상태에서 연산자 입력 & 연산자 중복 막기
+      //5. 일반 입력
+
+      // 1. C 버튼
+      if (n === 'C') this.clear();
+      // 2. = 버튼
+      if (n === '=') {
+        if (this.canCalculate()) {
+          this.computeResult();
+        } else {
+          this.setError();
+          this.clearError();
+        }
+        return;
+      }
+      // 현재 마지막 문자
     },
 
     calculate() {

@@ -1,0 +1,38 @@
+사용자 -> 웹브라우저 -> 자원을(URL, 도메인) 요청한다.
+서버가 보내준 페이지를 웹브라우저는 화면에 렌더링한다.
+
+=> 각 URL 요청은 서버에서 새로운 페이지 로드를 요청
+하면 서버의 부하가 심했다.
+
+=> SPA(Single Page Application) vuejs, react...
+첫 페이지 로딩시 서버로부터 필요한 모든 자원을 한번에 불러온다.
+사용자와 상호작용을 통해서 동적으로 화면을 갱신한다.
+(웹 브라우저에서 URL이  변경되더라도 새로운 페이지로드 요청x)
+(대신 JS를 통해 화면에 표시될 콘텐츠를 동적으로 렌더링함)
+
+vuejs에서 제공하는 뷰라우터란?
+뷰어플리케이션에서 브라우저의 URL과 애플리케이션의 view를 연결한다.
+뷰라우터는 SPA에서 URL변화에 따라 적절한 컴포넌트를 화면에 렌더링하도록 지원하는 기능
+
+- 뷰 라우터 기본원리
+- 라우팅 기법
+  1. 동적 라우팅
+  2. 중첩 라우팅
+  3. 네비게이션
+  4. 라우터 가드
+
+
+라우팅 작업시
+1. 라우팅 컴포넌트를 생성한다.(화면을 먼저 만든다.) - views/aboutview, views/homeview
+2. 라우터 인스턴스를 생성하고 등록한다. - router/index.js
+3. 라우터 인스턴스 사용등록 - main.js
+
+
+https://www.example.com/user/profile?name=yoomi&job=teacher
+
+https:// => 프로토콜
+www.example.com => 도메인
+/user/profile => 패스
+user, profile => 세그먼트
+
+?name=yoomi&job=teacher => 쿼리, 각각은 매개변수
