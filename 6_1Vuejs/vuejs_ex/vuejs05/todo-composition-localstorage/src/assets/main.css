@@ -1,0 +1,197 @@
+/* 전체 페이지 기본 스타일을 설정한다. */
+* {
+  box-sizing: border-box;
+}
+
+/* body의 기본 여백과 배경을 설정한다. */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6fb;
+  color: #222;
+}
+
+/* Vue 앱이 들어갈 루트 영역의 최소 높이를 확보한다. */
+#app {
+  min-height: 100vh;
+}
+
+/* 전체 Todo 앱 박스 스타일을 정의한다. */
+.todo-app {
+  width: min(720px, calc(100% - 32px));
+  margin: 40px auto;
+  padding: 28px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 상단 헤더 영역 간격을 설정한다. */
+.todo-header {
+  margin-bottom: 24px;
+}
+
+/* 제목 스타일을 설정한다. */
+.todo-title {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+/* 설명 문구 스타일을 설정한다. */
+.todo-description {
+  margin: 0 0 18px;
+  color: #666;
+}
+
+/* 탭 목록을 가로 정렬한다. */
+.todo-tab {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 탭 버튼 스타일을 설정한다. */
+.todo-tab li {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #eef2ff;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s ease;
+}
+
+/* 활성 탭 스타일을 설정한다. */
+.todo-tab--active {
+  background: #4f46e5 !important;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 입력창과 버튼을 한 줄로 배치한다. */
+.todo-input-wrap {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+/* 입력창 스타일을 설정한다. */
+.todo-input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid #d0d7e2;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+/* 등록 버튼 스타일을 설정한다. */
+.todo-add-btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 통계 영역을 가로 정렬한다. */
+.todo-summary {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  color: #555;
+}
+
+/* 목록 전체 영역의 간격을 설정한다. */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 비어 있음 박스 스타일을 설정한다. */
+.todo-empty {
+  padding: 28px;
+  border: 1px dashed #cdd5df;
+  border-radius: 14px;
+  text-align: center;
+  color: #7b8794;
+}
+
+/* 각 할 일 항목의 레이아웃을 설정한다. */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fafbff;
+}
+
+/* 완료된 항목은 배경과 투명도를 조금 바꾼다. */
+.todo-item--completed {
+  opacity: 0.75;
+}
+
+/* 완료된 항목 텍스트에 취소선을 준다. */
+.todo-item--completed .todo-item-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* 체크 영역이 너무 좁지 않도록 설정한다. */
+.todo-item-check-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 72px;
+}
+
+/* 할 일 텍스트가 남은 공간을 차지하게 한다. */
+.todo-item-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* 삭제 버튼 스타일을 설정한다. */
+.todo-delete-btn,
+.todo-clear-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #ef4444;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 하단 액션 버튼 정렬을 설정한다. */
+.todo-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+/* 모바일 화면에서 입력창과 버튼을 세로 배치한다. */
+@media (max-width: 640px) {
+  .todo-app {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .todo-input-wrap {
+    flex-direction: column;
+  }
+
+  .todo-item {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .todo-delete-btn {
+    width: 100%;
+  }
+}

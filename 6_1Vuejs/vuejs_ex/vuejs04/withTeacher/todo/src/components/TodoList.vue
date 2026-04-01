@@ -21,7 +21,6 @@ export default {
       },
     },
   },
-
   methods: {
     deleteTodo(id) {
       this.$emit('delete-todo', id);
@@ -72,6 +71,7 @@ export default {
         @click="editTodo(item.id)"
         >edit</span
       >
+      <span class="todo__item-text">{{ item.msg }}</span>
       <span
         class="material-symbols-outlined todo__delete-icon"
         @click="deleteTodo(item.id)"

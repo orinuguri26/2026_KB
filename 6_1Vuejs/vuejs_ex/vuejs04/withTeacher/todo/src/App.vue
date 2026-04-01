@@ -28,7 +28,9 @@
 import TodoHeader from '@/components/TodoHeader.vue';
 import TodoList from '@/components/TodoList.vue';
 import TodoInput from '@/components/TodoInput.vue';
+
 const STORAGE_KEY = 'todo-app-options-api';
+
 export default {
   components: {
     TodoHeader,
