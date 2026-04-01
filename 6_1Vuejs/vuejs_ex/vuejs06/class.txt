@@ -21,5 +21,8 @@ Vuejs에서 제공하는 뷰라우터란?
   3. 내비게이션
   4. 라우터 가드 
 
-  1. 라우팅 컴포넌트 생성한다. (화면)
-  2. 라우터 인스턴스 생성 하고 등록한다. 
+  1. 라우팅 컴포넌트 생성한다. (화면) - views/aboutView, views/HomeView
+  2. 라우터 인스턴스 생성 하고 등록한다. - router/index.js
+  3. 라우터 인스턴스 사용등록   - main.js 
+  4. 화면등록  - app.vue
+    http://www.example.com/user/profile?name=yoomi&job=teacher
