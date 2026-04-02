@@ -1,0 +1,8 @@
+Axios 통신하기
+웹 브라우저에서 HTTP 통신을 지원하기 위해 사용되는
+HTTP 클라이언트 라이브러리
+
+CORS (Cross Origin Resource Sharing) 
+웹 어플리케이션에서 다른 도메인 있는 리소스에 접근하기 위한 보안 메커니즘
+
+웹 브라우저는 기본적으로 동일 출처 정책(same-Origin policy)
