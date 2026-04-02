@@ -25,15 +25,16 @@ const dataFilePath = path.join(__dirname, 'data.json');
 app.use(express.json());
 
 // 간단한 CORS 설정 미들웨어
-// 다른 주소(예: Vue 프론트엔드)에서도 이 서버에 요청할 수 있도록 허용
+// 예: Vue 프론트엔드)에서도 이 서버에 요청할 수 있도록 허용
 app.use((req, res, next) => {
   // 모든 출처(origin)에서 접근 허용
   res.header('Access-Control-Allow-Origin', '*');
 
   // 허용할 HTTP 메서드 지정
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  // 컨텐츠 헤더 지정
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  // 다음 미들웨어 또는 라우터로 이동
+
   next();
 });
 
@@ -240,3 +241,6 @@ async function writeDataFile(data) {
 // 서버 실행
 // localhost:3000 에서 서버 시작
 // ==============================
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
