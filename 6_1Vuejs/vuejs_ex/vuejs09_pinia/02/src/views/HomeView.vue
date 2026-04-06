@@ -1,4 +1,15 @@
-<script></script>
+<script>
+import { mapState } from 'pinia';
+import { useCountSetupStore } from '@/stores/countSetup';
+
+const setupStore = useCountSetupStore();
+console.log(setupStore.doubleNum);
+console.log(setupStore.num);
+console.log(setupStore.increment());
+setupStore.getJson('https://jsonplaceholder.typicode.com/posts');
+console.log(num, doubleNum);
+</script>
+
 <template>
   <h2>num: {{ num }}</h2>
 
